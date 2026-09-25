@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Page - Maria Luiza de Mattos | Programa Estagiar Globo</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            globo: {
+              blue: '#0055FF',
+              purple: '#7B2CBF',
+              pink: '#E63946',
+              orange: '#FF5400',
+              yellow: '#FFB703',
+              green: '#06D6A0'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Borda sutil em gradiente Globo */
+    .globo-border-gradient {
+      position: relative;
+      background: white;
+      border-radius: 1rem;
+    }
+    .globo-border-gradient::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, #0055FF, #7B2CBF, #E63946, #FF5400, #FFB703);
+      border-radius: 1.05rem;
+      z-index: -1;
+      opacity: 0.85;
+    }
+
+    /* Gradiente de Texto Globo para o Nome */
+    .globo-text-gradient {
+      background: linear-gradient(90deg, #0055FF 0%, #7B2CBF 25%, #E63946 50%, #FF5400 75%, #FFB703 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Linha decorativa no topo dos cards */
+    .globo-top-line {
+      position: relative;
+      overflow: hidden;
+    }
+    .globo-top-line::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0055FF, #7B2CBF, #E63946, #FF5400, #FFB703);
+    }
+
+    /* Efeitos de Hover nos Cards Principais */
+    .bento-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Hovers com cores da Globo para os Botões de Contato */
+    .btn-globo-linkedin:hover {
+      background-color: #0055FF !important;
+      color: white !important;
+      border-color: #0055FF !important;
+    }
+    .btn-globo-email:hover {
+      background-color: #E63946 !important;
+      color: white !important;
+      border-color: #E63946 !important;
+    }
+    .btn-globo-phone:hover {
+      background-color: #06D6A0 !important;
+      color: white !important;
+      border-color: #06D6A0 !important;
+    }
+
+    /* EFEITO FLIP CARD 3D */
+    .flip-card {
+      background-color: transparent;
+      perspective: 1000px;
+      height: 85px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+  <!-- Container Principal One Page -->
+  <main class="max-w-6xl mx-auto space-y-6">
+
+    <!-- CABEÇALHO / HERO CARD -->
+    <header class="globo-border-gradient shadow-sm p-6 md:p-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+            <span class="w-2 h-2 rounded-full bg-globo-blue animate-pulse"></span>
+            Programa Estagiar Globo • 2º Ciclo
+          </div>
+          <!-- Nome com Gradiente Globo -->
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight globo-text-gradient">
+            Maria Luiza de Mattos
+          </h1>
+          <!-- Subtítulo com Liderança LIGPETRO -->
+          <p class="text-xs sm:text-sm md:text-base font-medium text-slate-600 flex flex-wrap items-center gap-2">
+            <span>Graduanda em Administração (UFRJ)</span>
+            <span class="text-slate-300">•</span>
+            <span>Técnica em Informática (ISERJ)</span>
+            <span class="text-slate-300">•</span>
+            <span>Liderança LIGPETRO</span>
+          </p>
+        </div>
+
+        <!-- Links de Contato Original (Lado a lado com ajuste no e-mail) -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="https://www.linkedin.com/in/maria-luiza-mattos" target="_blank" class="btn-globo-linkedin inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-medium text-xs sm:text-sm transition-all duration-200 whitespace-nowrap">
+            <i data-lucide="linkedin" class="w-4 h-4 shrink-0"></i> <span>LinkedIn</span>
+          </a>
+          <a href="mailto:mlmattosmarinhos@gmail.com" class="btn-globo-email inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-medium text-xs sm:text-sm transition-all duration-200 whitespace-nowrap">
+            <i data-lucide="mail" class="w-4 h-4 shrink-0"></i> <span>E-mail</span>
+          </a>
+          <a href="tel:21980674407" class="btn-globo-phone inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-medium text-xs sm:text-sm transition-all duration-200 whitespace-nowrap">
+            <i data-lucide="phone" class="w-4 h-4 shrink-0"></i> <span>Contato</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- GRID BENTO -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+      <!-- BLOC 1: COMO ME APRESENTO HOJE? -->
+      <section class="md:col-span-8 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm bento-card globo-top-line flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-globo-blue font-bold text-xs uppercase tracking-wider mb-2">
+            <i data-lucide="user-check" class="w-4 h-4"></i> Perfil & Trajetória
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mb-3">Como me apresento hoje?</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Graduanda do 5º período de <strong>Administração na UFRJ</strong> e formada como <strong>Técnica em Informática pelo ISERJ</strong>. Minha trajetória conecta o rigor analítico administrativo à capacidade técnica de solucionar problemas operacionais.
+          </p>
+          
+          <!-- Cards Clicáveis de Experiência (Abrem Modal) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+            <button onclick="openModal('modal-fujb')" class="text-left p-4 bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-globo-blue rounded-xl transition-all group cursor-pointer relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-bold text-slate-800 group-hover:text-globo-blue transition-colors">Prática Administrativo-Financeira</span>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-globo-blue group-hover:translate-x-0.5 transition-all"></i>
+              </div>
+              <p class="text-xs text-slate-500 line-clamp-2">FUJB: Gestão de convênios, conferência financeira, lançamentos em sistemas e controle de boletos.</p>
+              <span class="mt-2 text-[10px] text-globo-blue font-semibold inline-block">Clique para detalhes +</span>
+            </button>
+
+            <button onclick="openModal('modal-uerj')" class="text-left p-4 bg-slate-50 hover:bg-purple-50/60 border border-slate-200 hover:border-globo-purple rounded-xl transition-all group cursor-pointer relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-bold text-slate-800 group-hover:text-globo-purple transition-colors">Base Tecnológica & Processos</span>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-globo-purple group-hover:translate-x-0.5 transition-all"></i>
+              </div>
+              <p class="text-xs text-slate-500 line-clamp-2">UERJ: Automação de rotinas com programação, manutenção de bancos de dados e suporte a sistemas.</p>
+              <span class="mt-2 text-[10px] text-globo-purple font-semibold inline-block">Clique para detalhes +</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 italic">
+          "Unindo precisão numérica, controle de processos e adaptabilidade tecnológica."
+        </div>
+      </section>
+
+      <!-- BLOC 2: LIDERANÇA & EXTENSÃO -->
+      <section class="md:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm bento-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-globo-purple font-bold text-xs uppercase tracking-wider mb-2">
+            <i data-lucide="award" class="w-4 h-4"></i> Liderança & Impacto
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mb-3">Vivência Prática</h2>
+          
+          <div class="space-y-3 text-xs">
+            <div class="pb-2 border-b border-slate-100">
+              <span class="font-bold text-slate-800 block text-sm">Diretora Adm-Financeira & Ex-Gerente Mkt</span>
+              <span class="text-globo-purple font-medium block mb-1">LIGPETRO • UFRJ</span>
+              <p class="text-slate-600">Gestão do orçamento anual, liderança de equipes, definição de estratégias e planejamento de campanhas.</p>
+            </div>
+            <div>
+              <span class="font-bold text-slate-800 block text-sm">Consultoria a Empreendedoras</span>
+              <span class="text-globo-purple font-medium block mb-1">Projeto de Extensão Periferia</span>
+              <p class="text-slate-600">Planejamento financeiro, precificação, projeção de despesas e fluxo de caixa para pequenos negócios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-100">
+          <span class="inline-block px-2.5 py-1 bg-purple-50 text-globo-purple text-[11px] font-semibold rounded-lg">
+            Gestão, Estratégia & Liderança
+          </span>
+        </div>
+      </section>
+
+      <!-- BLOC 3: O QUE TE IMPULSIONA? -->
+      <section class="md:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm bento-card globo-top-line">
+        <div class="flex items-center gap-2 text-globo-pink font-bold text-xs uppercase tracking-wider mb-2">
+          <i data-lucide="zap" class="w-4 h-4"></i> Motivações & Valores
+        </div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">O que me impulsiona?</h2>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Sou movida por transformar dados em eficiência e por construir rotinas ágeis que simplifiquem o trabalho das pessoas. Acredito na colaboração e na constante busca por aprendizado.
+        </p>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+          <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="tv-2" class="w-3.5 h-3.5 text-globo-pink"></i> Conexão com o Futuro da Globo:
+          </span>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            A Globo é uma potência MediaTech em evolução. Minha flexibilidade em transitar entre gestão e tecnologia se alinha com o ritmo inovador da empresa.
+          </p>
+        </div>
+      </section>
+
+      <!-- BLOC 4: CONEXÃO COM A ÁREA -->
+      <section class="md:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm bento-card globo-top-line">
+        <div class="flex items-center gap-2 text-globo-orange font-bold text-xs uppercase tracking-wider mb-2">
+          <i data-lucide="target" class="w-4 h-4"></i> Fit com a Vaga
+        </div>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Contribuição na Prática</h2>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          Desejo aplicar minha experiência em gestão, organização e tecnologia para agregar valor ao time desde o primeiro dia.
+        </p>
+
+        <ul class="space-y-2 text-xs text-slate-700">
+          <li class="flex items-start gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-globo-orange shrink-0 mt-0.5"></i>
+            <span><strong>Otimização de Gargalos:</strong> Mapeamento de rotinas operacionais e aplicação de melhorias contínuas.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-globo-orange shrink-0 mt-0.5"></i>
+            <span><strong>Rigor com Indicadores:</strong> Controle de custos, acompanhamento de metas e relatórios financeiros.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-globo-orange shrink-0 mt-0.5"></i>
+            <span><strong>Trabalho em Equipe:</strong> Comunicação fluida entre diferentes áreas estratégicas e técnicas.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- BLOC 5: COMPETÊNCIAS (FLIP CARDS) -->
+      <section class="md:col-span-12 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm bento-card">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+          <div>
+            <div class="flex items-center gap-2 text-globo-green font-bold text-xs uppercase tracking-wider mb-1">
+              <i data-lucide="cpu" class="w-4 h-4"></i> Competências & Ferramentas
+            </div>
+            <h2 class="text-lg font-bold text-slate-900">Habilidades e Certificações</h2>
+          </div>
+          <span class="text-xs text-slate-400">Clique em qualquer card para virar e ver a descrição</span>
+        </div>
+
+        <!-- Grid de Flip Cards 3D -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          
+          <!-- Card 1: Excel -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="file-spreadsheet" class="w-4 h-4 text-globo-green shrink-0"></i> Excel
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Intermediário</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Planilhas financeiras, Procv, Proch e fórmulas corporativas.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Power BI -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="bar-chart-3" class="w-4 h-4 text-globo-blue shrink-0"></i> Power BI
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Análise de Dados</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Modelagem básica, relatórios e dashboards operacionais.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Programação -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="code" class="w-4 h-4 text-globo-purple shrink-0"></i> Programação
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Técnico / Automação</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Lógica de programação para automação de rotinas e processos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: ERPs -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="database" class="w-4 h-4 text-globo-orange shrink-0"></i> ERPs / Gestão
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">SIAF / Conveniar</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Domínio dos sistemas SIAF, Nasajon e Conveniar (FUJB).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: PowerPoint -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="presentation" class="w-4 h-4 text-globo-pink shrink-0"></i> PowerPoint
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Avançado</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Apresentações corporativas de alto impacto e dados visuais.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Word -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="file-text" class="w-4 h-4 text-globo-blue shrink-0"></i> MS Word
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Avançado</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Elaboração, normatização e padronização de relatórios.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7: Canva -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="layout" class="w-4 h-4 text-globo-yellow shrink-0"></i> Canva
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Criação Visual</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Artes visuais, materiais institucionais e posts da LIGPETRO.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: Idiomas -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="globe" class="w-4 h-4 text-globo-green shrink-0"></i> Idiomas
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Inglês & Espanhol</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Inglês Intermediário B+ e Espanhol Intermediário.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9: Redes -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="network" class="w-4 h-4 text-globo-blue shrink-0"></i> Redes
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Infraestrutura</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Conhecimentos técnicos de infraestrutura e protocolos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 10: Atendimento -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="users" class="w-4 h-4 text-globo-purple shrink-0"></i> Atendimento
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Postura Profissional</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Comunicação assertiva e suporte eficiente aos usuários.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 11: Projetos -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="folder-check" class="w-4 h-4 text-globo-orange shrink-0"></i> Projetos
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Gestão & Metas</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Acompanhamento orçamentário e cumprimento de metas.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 12: Contratos -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-center">
+                <div class="flex items-center gap-1.5 font-bold text-xs text-slate-800 mb-1">
+                  <i data-lucide="file-check-2" class="w-4 h-4 text-globo-pink shrink-0"></i> Contratos
+                </div>
+                <span class="text-[10px] text-slate-500 font-medium">Conferência / Boletos</span>
+              </div>
+              <div class="flip-card-back p-3 bg-slate-900 text-white rounded-xl flex items-center justify-center text-center">
+                <p class="text-[10px] leading-snug text-slate-200">Verificação rigorosa de documentos e conciliações.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RODAPÉ DA APRESENTAÇÃO DE 5 MINUTOS -->
+    <footer class="text-center py-4 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-200 mt-8">
+      <span>Pré-tarefa • Entrevista com Lideranças • Programa Estagiar Globo</span>
+      <span class="font-medium text-slate-600">Roteiro de apresentação estimado: 5 minutos</span>
+    </footer>
+
+  </main>
+
+  <!-- MODAL DE DETALHES DA SEÇÃO "COMO ME APRESENTO HOJE" -->
+  <div id="modal-container" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl relative border border-slate-100 animate-in fade-in zoom-in-95 duration-150">
+      <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modal-content">
+        <!-- Conteúdo dinâmico injetado via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Inicialização dos Ícones Lucide
+    lucide.createIcons();
+
+    // Detalhes dos cards da seção Perfil
+    const details = {
+      'modal-fujb': {
+        title: 'Prática Administrativo-Financeira (FUJB)',
+        subtitle: 'Estagiária Administrativo-Financeira (Abril 2025 - Atual)',
+        bullets: [
+          'Apoio às rotinas administrativas e financeiras de gestão de convênios, contratos e parcerias.',
+          'Elaboração e organização de planilhas de controle financeiro no Excel para acompanhamento de despesas e pagamentos.',
+          'Conferência e controle de notas fiscais, boletos, recibos e comprovantes de pagamento.',
+          'Lançamento de informações em sistemas corporativos de gestão (SIAF, Nasajon, Conveniar).',
+          'Identificação de gargalos para propor melhorias e maior agilidade nos processos.'
+        ]
+      },
+      'modal-uerj': {
+        title: 'Base Tecnológica & Processos (UERJ)',
+        subtitle: 'Estagiária Técnica de Informática (Maio 2023 - Março 2024)',
+        bullets: [
+          'Apoio no desenvolvimento de soluções em programação para automação de rotinas.',
+          'Atualização e manutenção de bancos de dados técnicos garantindo maior confiabilidade.',
+          'Configuração e suporte em sistemas operacionais e ferramentas corporativas.',
+          'Elaboração de relatórios técnicos e acompanhamento de chamados operacionais.',
+          'Participação no Projeto Know-How Letras integrando tecnologia e processos.'
+        ]
+      }
+    };
+
+    function openModal(key) {
+      const modal = document.getElementById('modal-container');
+      const content = document.getElementById('modal-content');
+      const data = details[key];
+
+      if (!data) return;
+
+      let bulletsHtml = data.bullets.map(b => `<li class="flex items-start gap-2 mb-2"><span class="text-globo-blue font-bold">•</span><span>${b}</span></li>`).join('');
+
+      content.innerHTML = `
+        <div class="mb-4">
+          <span class="text-[10px] uppercase font-bold text-globo-blue tracking-wider block mb-1">Detalhamento</span>
+          <h3 class="text-lg font-bold text-slate-900">${data.title}</h3>
+          <p class="text-xs font-semibold text-slate-500">${data.subtitle}</p>
+        </div>
+        <ul class="text-xs text-slate-600 leading-relaxed mb-4">
+          ${bulletsHtml}
+        </ul>
+        <button onclick="closeModal()" class="w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition-colors">
+          Fechar
+        </button>
+      `;
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-container').classList.add('hidden');
+    }
+
+    // Fechar ao clicar fora do modal
+    document.getElementById('modal-container').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+</body>
+</html>
